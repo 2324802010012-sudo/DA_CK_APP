@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="400dp"
+    android:height="80dp"
+    android:viewportWidth="400"
+    android:viewportHeight="80">
+
+
+    <!-- SÓNG XANH NHẠT PHÍA SAU -->
+
+    <path
+        android:fillColor="#DCEEFF"
+
+        android:pathData="
+        M0,35
+        C60,5 120,10 180,32
+        C240,55 300,5 400,18
+        L400,80
+        L0,80
+        Z" />
+
+
+    <!-- SÓNG XANH RẤT NHẠT -->
+
+    <path
+        android:fillColor="#EDF6FF"
+
+        android:pathData="
+        M0,47
+        C65,18 130,20 190,42
+        C250,63 315,17 400,29
+        L400,80
+        L0,80
+        Z" />
+
+
+    <!-- SÓNG TRẮNG PHÍA TRƯỚC -->
+
+    <path
+        android:fillColor="#FFFFFF"
+
+        android:pathData="
+        M0,58
+        C70,28 135,32 200,53
+        C265,72 325,30 400,40
+        L400,80
+        L0,80
+        Z" />
+
+</vector>

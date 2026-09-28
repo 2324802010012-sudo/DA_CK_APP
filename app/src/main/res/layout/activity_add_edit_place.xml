@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7FAFE"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+
+        <!-- ========================================= -->
+        <!-- HEADER -->
+        <!-- ========================================= -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/btnBack"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:gravity="center"
+                android:text="‹"
+                android:textColor="#12365A"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Thêm địa điểm"
+                android:textColor="#12365A"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <!-- ========================================= -->
+        <!-- TÊN ĐỊA ĐIỂM -->
+        <!-- ========================================= -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Tên địa điểm"
+            android:textColor="#12365A"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtPlaceName"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/bg_search"
+            android:hint="Ví dụ: Vịnh Hạ Long"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:singleLine="true"
+            android:textColor="#12365A"
+            android:textColorHint="#9AA8B8" />
+
+
+        <!-- ========================================= -->
+        <!-- ĐỊA CHỈ -->
+        <!-- ========================================= -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:text="Địa chỉ"
+            android:textColor="#12365A"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtAddress"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/bg_search"
+            android:hint="Ví dụ: Quảng Ninh"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:singleLine="true"
+            android:textColor="#12365A"
+            android:textColorHint="#9AA8B8" />
+
+
+        <!-- ========================================= -->
+        <!-- KHU VỰC -->
+        <!-- ========================================= -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:text="Khu vực"
+            android:textColor="#12365A"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtRegion"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/bg_search"
+            android:hint="Miền Bắc / Miền Trung / Miền Nam"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:singleLine="true"
+            android:textColor="#12365A"
+            android:textColorHint="#9AA8B8" />
+
+
+        <!-- ========================================= -->
+        <!-- DANH MỤC -->
+        <!-- ========================================= -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:text="Danh mục"
+            android:textColor="#12365A"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtCategory"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/bg_search"
+            android:hint="Ví dụ: Thiên nhiên"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:singleLine="true"
+            android:textColor="#12365A"
+            android:textColorHint="#9AA8B8" />
+
+
+        <!-- ========================================= -->
+        <!-- ĐÁNH GIÁ -->
+        <!-- ========================================= -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:text="Đánh giá"
+            android:textColor="#12365A"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtRating"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/bg_search"
+            android:hint="Ví dụ: 4.8"
+            android:inputType="numberDecimal"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:singleLine="true"
+            android:textColor="#12365A"
+            android:textColorHint="#9AA8B8" />
+
+
+        <!-- ========================================= -->
+        <!-- MÔ TẢ -->
+        <!-- ========================================= -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:text="Mô tả"
+            android:textColor="#12365A"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtDescription"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/bg_search"
+            android:gravity="top|start"
+            android:hint="Nhập mô tả địa điểm..."
+            android:inputType="textMultiLine"
+            android:padding="15dp"
+            android:textColor="#12365A"
+            android:textColorHint="#9AA8B8" />
+
+
+        <!-- ========================================= -->
+        <!-- THỜI ĐIỂM THÍCH HỢP -->
+        <!-- ========================================= -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:text="Thời điểm thích hợp"
+            android:textColor="#12365A"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtBestTime"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/bg_search"
+            android:hint="Ví dụ: Tháng 3 - Tháng 10"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:singleLine="true"
+            android:textColor="#12365A"
+            android:textColorHint="#9AA8B8" />
+
+
+        <!-- ========================================= -->
+        <!-- HÌNH ẢNH ĐỊA ĐIỂM -->
+        <!-- ========================================= -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:text="Hình ảnh địa điểm"
+            android:textColor="#12365A"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+        <!-- ẢNH XEM TRƯỚC -->
+
+        <ImageView
+            android:id="@+id/imgPreview"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_card"
+            android:contentDescription="Ảnh địa điểm"
+            android:padding="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/halong_bay" />
+
+
+        <!-- NÚT CHỌN ẢNH -->
+
+        <Button
+            android:id="@+id/btnChooseImage"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#64748B"
+            android:text="CHỌN ẢNH TỪ MÁY"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+
+        <!-- GỢI Ý -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:gravity="center"
+            android:text="Chọn ảnh từ thư viện trên thiết bị"
+            android:textColor="#8493A8"
+            android:textSize="12sp" />
+
+
+        <!-- ========================================= -->
+        <!-- NÚT LƯU -->
+        <!-- ========================================= -->
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="30dp"
+            android:backgroundTint="#2878E3"
+            android:text="THÊM ĐỊA ĐIỂM"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</ScrollView>

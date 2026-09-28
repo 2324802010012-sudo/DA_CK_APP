@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7FAFE">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="22dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Trang quản trị"
+            android:textColor="#12365A"
+            android:textSize="27sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Quản lý hệ thống du lịch"
+            android:textColor="#8493A8"
+            android:textSize="14sp" />
+
+
+        <!-- QUẢN LÝ ĐỊA ĐIỂM -->
+
+        <TextView
+            android:id="@+id/menuManagePlaces"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bg_card"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:text="📍   Quản lý địa điểm"
+            android:textColor="#12365A"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+
+        <!-- QUẢN LÝ NGƯỜI DÙNG -->
+
+        <TextView
+            android:id="@+id/menuManageUsers"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_card"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:text="👤   Quản lý người dùng"
+            android:textColor="#12365A"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+
+        <!-- QUẢN LÝ MẸO -->
+
+        <TextView
+            android:id="@+id/menuManageTips"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_card"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:text="✈   Quản lý mẹo du lịch"
+            android:textColor="#12365A"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+
+        <!-- XEM ỨNG DỤNG -->
+
+        <TextView
+            android:id="@+id/menuViewApp"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_card"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:text="⌂   Xem trang người dùng"
+            android:textColor="#12365A"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+
+        <!-- ĐĂNG XUẤT -->
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#F0445E"
+            android:text="ĐĂNG XUẤT"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</ScrollView>

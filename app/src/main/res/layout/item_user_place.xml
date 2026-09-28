@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="22dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginEnd="22dp"
+    android:background="@drawable/bg_card"
+    android:clickable="true"
+    android:elevation="3dp"
+    android:focusable="true"
+    android:orientation="vertical">
+
+
+    <!-- ========================================= -->
+    <!-- ẢNH -->
+    <!-- ========================================= -->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp">
+
+        <ImageView
+            android:id="@+id/imgPlace"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Ảnh địa điểm"
+            android:scaleType="centerCrop"
+            android:src="@drawable/halong_bay" />
+
+
+        <!-- YÊU THÍCH -->
+
+        <TextView
+            android:id="@+id/btnFavorite"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_gravity="top|end"
+            android:layout_margin="12dp"
+            android:background="@drawable/bg_category_card"
+            android:gravity="center"
+            android:text="♡"
+            android:textColor="#F0445E"
+            android:textSize="25sp" />
+
+    </FrameLayout>
+
+
+    <!-- ========================================= -->
+    <!-- THÔNG TIN -->
+    <!-- ========================================= -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+
+        <!-- TÊN -->
+
+        <TextView
+            android:id="@+id/txtPlaceName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vịnh Hạ Long"
+            android:textColor="#12365A"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+        <!-- ĐỊA CHỈ -->
+
+        <TextView
+            android:id="@+id/txtPlaceAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="📍 Quảng Ninh"
+            android:textColor="#718096"
+            android:textSize="13sp" />
+
+
+        <!-- ĐÁNH GIÁ + DANH MỤC -->
+
+        <TextView
+            android:id="@+id/txtPlaceInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="★ 4.8   •   Thiên nhiên"
+            android:textColor="#FF8A00"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</LinearLayout>

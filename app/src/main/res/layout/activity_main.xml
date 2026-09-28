@@ -1,0 +1,895 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7FAFE">
+
+
+    <!-- ================================================= -->
+    <!-- NỘI DUNG TRANG CHỦ -->
+    <!-- ================================================= -->
+
+    <ScrollView
+        android:id="@+id/scrollHome"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <!-- ScrollView chỉ có 1 View con -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="25dp">
+
+
+            <!-- ================================================= -->
+            <!-- TÌM KIẾM + MENU -->
+            <!-- ================================================= -->
+
+            <LinearLayout
+                android:id="@+id/layoutTop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="22dp"
+
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <!-- Ô TÌM KIẾM -->
+
+                <EditText
+                    android:id="@+id/edtSearch"
+
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/bg_search"
+
+                    android:drawableStart="@android:drawable/ic_menu_search"
+                    android:drawablePadding="10dp"
+
+                    android:hint="Tìm kiếm địa điểm du lịch..."
+
+                    android:paddingStart="16dp"
+                    android:paddingEnd="14dp"
+
+                    android:singleLine="true"
+
+                    android:textColor="#263D5A"
+                    android:textColorHint="#98A6B8"
+                    android:textSize="13sp" />
+
+
+                <!-- NÚT 3 GẠCH -->
+
+                <TextView
+                    android:id="@+id/btnMenu"
+
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+
+                    android:layout_marginStart="10dp"
+
+                    android:background="@drawable/bg_menu_button"
+
+                    android:clickable="true"
+                    android:focusable="true"
+
+                    android:gravity="center"
+
+                    android:text="☰"
+                    android:textColor="#12365A"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <!-- ================================================= -->
+            <!-- BANNER -->
+            <!-- ================================================= -->
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="185dp"
+
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="22dp">
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:contentDescription="Vịnh Hạ Long"
+
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/halong_bay" />
+
+
+                <!-- Overlay -->
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#40000000" />
+
+
+                <!-- Chữ trên banner -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:gravity="bottom"
+
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="KHÁM PHÁ VIỆT NAM"
+
+                        android:textColor="#FFFFFF"
+                        android:textSize="21sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginTop="5dp"
+
+                        android:text="Hành trình tuyệt vời đang chờ bạn"
+
+                        android:textColor="#FFFFFF"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+
+            <!-- ================================================= -->
+            <!-- TIÊU ĐỀ KHÁM PHÁ -->
+            <!-- ================================================= -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="24dp"
+
+                android:text="Khám phá"
+
+                android:textColor="#12365A"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <!-- ================================================= -->
+            <!-- 4 CHỨC NĂNG -->
+            <!-- ================================================= -->
+
+            <LinearLayout
+                android:id="@+id/layoutExplore"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="14dp"
+
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <!-- ===================== -->
+                <!-- ĐỊA ĐIỂM -->
+                <!-- ===================== -->
+
+                <LinearLayout
+                    android:id="@+id/menuLocation"
+
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/bg_category_card"
+
+                    android:clickable="true"
+                    android:elevation="2dp"
+                    android:focusable="true"
+
+                    android:gravity="center"
+                    android:orientation="vertical"
+
+                    android:padding="6dp">
+
+
+                    <ImageView
+                        android:layout_width="54dp"
+                        android:layout_height="54dp"
+
+                        android:contentDescription="Địa điểm"
+
+                        android:scaleType="fitCenter"
+
+                        android:src="@drawable/icon_location" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginTop="7dp"
+
+                        android:gravity="center"
+
+                        android:text="Địa điểm"
+
+                        android:textColor="#12365A"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <!-- ===================== -->
+                <!-- HÀNH TRÌNH -->
+                <!-- ===================== -->
+
+                <LinearLayout
+                    android:id="@+id/menuJourney"
+
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/bg_category_card"
+
+                    android:clickable="true"
+                    android:elevation="2dp"
+                    android:focusable="true"
+
+                    android:gravity="center"
+                    android:orientation="vertical"
+
+                    android:padding="6dp">
+
+
+                    <TextView
+                        android:layout_width="54dp"
+                        android:layout_height="54dp"
+
+                        android:background="@drawable/bg_icon_orange"
+
+                        android:gravity="center"
+
+                        android:text="➤"
+
+                        android:textColor="#FF7A00"
+                        android:textSize="24sp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginTop="7dp"
+
+                        android:gravity="center"
+
+                        android:text="Hành trình"
+
+                        android:textColor="#12365A"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <!-- ===================== -->
+                <!-- YÊU THÍCH -->
+                <!-- ===================== -->
+
+                <LinearLayout
+                    android:id="@+id/menuFavorite"
+
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/bg_category_card"
+
+                    android:clickable="true"
+                    android:elevation="2dp"
+                    android:focusable="true"
+
+                    android:gravity="center"
+                    android:orientation="vertical"
+
+                    android:padding="6dp">
+
+
+                    <TextView
+                        android:layout_width="54dp"
+                        android:layout_height="54dp"
+
+                        android:background="@drawable/bg_icon_red"
+
+                        android:gravity="center"
+
+                        android:text="♥"
+
+                        android:textColor="#F0445E"
+                        android:textSize="27sp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginTop="7dp"
+
+                        android:gravity="center"
+
+                        android:text="Yêu thích"
+
+                        android:textColor="#12365A"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <!-- ===================== -->
+                <!-- MẸO -->
+                <!-- ===================== -->
+
+                <LinearLayout
+                    android:id="@+id/menuTips"
+
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/bg_category_card"
+
+                    android:clickable="true"
+                    android:elevation="2dp"
+                    android:focusable="true"
+
+                    android:gravity="center"
+                    android:orientation="vertical"
+
+                    android:padding="6dp">
+
+
+                    <TextView
+                        android:layout_width="54dp"
+                        android:layout_height="54dp"
+
+                        android:background="@drawable/bg_icon_blue"
+
+                        android:gravity="center"
+
+                        android:text="✈"
+
+                        android:textColor="#1473E6"
+                        android:textSize="23sp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginTop="7dp"
+
+                        android:gravity="center"
+
+                        android:text="Mẹo"
+
+                        android:textColor="#12365A"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ================================================= -->
+            <!-- DANH MỤC KHÁM PHÁ -->
+            <!-- ================================================= -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="22dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Danh mục khám phá"
+                    android:textColor="#12365A"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Xem tất cả"
+                    android:textColor="#1473E6"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <!-- DI SẢN -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="3dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_icon_orange"
+                        android:gravity="center"
+                        android:text="▥"
+                        android:textColor="#FF7A00"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:gravity="center"
+                        android:text="Di sản"
+                        android:textColor="#314766"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <!-- THIÊN NHIÊN -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="3dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_icon_green"
+                        android:gravity="center"
+                        android:text="▲"
+                        android:textColor="#00A982"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:gravity="center"
+                        android:text="Thiên nhiên"
+                        android:textColor="#314766"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <!-- CHECK-IN -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="3dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_icon_blue"
+                        android:gravity="center"
+                        android:text="●"
+                        android:textColor="#1473E6"
+                        android:textSize="21sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:gravity="center"
+                        android:text="Check-in"
+                        android:textColor="#314766"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <!-- ẨM THỰC -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="3dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_icon_red"
+                        android:gravity="center"
+                        android:text="♨"
+                        android:textColor="#F0445E"
+                        android:textSize="21sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:gravity="center"
+                        android:text="Ẩm thực"
+                        android:textColor="#314766"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <!-- GIA ĐÌNH -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="3dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_icon_orange"
+                        android:gravity="center"
+                        android:text="★"
+                        android:textColor="#FF7A00"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:gravity="center"
+                        android:text="Gia đình"
+                        android:textColor="#314766"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <!-- ========================================== -->
+            <!-- ĐIỂM ĐẾN NỔI BẬT -->
+            <!-- ========================================== -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="22dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="🔥 Điểm đến nổi bật"
+                    android:textColor="#12365A"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtSeeAllPopular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Xem tất cả"
+                    android:textColor="#1473E6"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- ================================================= -->
+            <!-- DÀNH CHO BẠN -->
+            <!-- ================================================= -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="22dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="✨ Dành cho bạn"
+                    android:textColor="#12365A"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Xem thêm"
+                    android:textColor="#1473E6"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+            <!-- ================================================= -->
+            <!-- CARD VỊNH HẠ LONG -->
+            <!-- ================================================= -->
+
+            <LinearLayout
+                android:id="@+id/cardHaLong"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="22dp"
+
+                android:background="@drawable/bg_card"
+
+                android:clickable="true"
+                android:elevation="3dp"
+                android:focusable="true"
+
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="155dp"
+
+                    android:contentDescription="Vịnh Hạ Long"
+
+                    android:scaleType="centerCrop"
+
+                    android:src="@drawable/halong_bay" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="vertical"
+
+                    android:padding="16dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Vịnh Hạ Long"
+
+                        android:textColor="#163B60"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginTop="5dp"
+
+                        android:text="Quảng Ninh • Di sản thiên nhiên"
+
+                        android:textColor="#718096"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <!-- ========================================== -->
+            <!-- GỢI Ý HÀNH TRÌNH -->
+            <!-- ========================================== -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="22dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="🧭 Gợi ý hành trình"
+                    android:textColor="#12365A"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Khám phá"
+                    android:textColor="#1473E6"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <!-- ================================================= -->
+    <!-- THANH ĐIỀU HƯỚNG DƯỚI -->
+    <!-- ================================================= -->
+
+    <LinearLayout
+        android:id="@+id/bottomNavigation"
+
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+
+        android:background="#FFFFFF"
+
+        android:elevation="12dp"
+
+        android:gravity="center"
+        android:orientation="horizontal"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <!-- TRANG CHỦ -->
+
+        <TextView
+            android:id="@+id/navHome"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
+            android:layout_weight="1"
+
+            android:gravity="center"
+
+            android:text="⌂&#10;Trang chủ"
+
+            android:textColor="#1473E6"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+
+        <!-- KHÁM PHÁ -->
+
+        <TextView
+            android:id="@+id/navExplore"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
+            android:layout_weight="1"
+
+            android:gravity="center"
+
+            android:text="⌕&#10;Khám phá"
+
+            android:textColor="#8493A8"
+            android:textSize="12sp" />
+
+
+        <!-- YÊU THÍCH -->
+
+        <TextView
+            android:id="@+id/navFavorite"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
+            android:layout_weight="1"
+
+            android:gravity="center"
+
+            android:text="♥&#10;Yêu thích"
+
+            android:textColor="#8493A8"
+            android:textSize="12sp" />
+
+
+        <!-- CÁ NHÂN -->
+
+        <TextView
+            android:id="@+id/navProfile"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
+            android:layout_weight="1"
+
+            android:gravity="center"
+
+            android:text="●&#10;Cá nhân"
+
+            android:textColor="#8493A8"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
