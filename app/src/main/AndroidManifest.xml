@@ -105,7 +105,15 @@
         <activity
             android:name=".FavoriteActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyRatingActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

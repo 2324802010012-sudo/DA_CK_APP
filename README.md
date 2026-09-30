@@ -1,219 +1,257 @@
-# DA_APP - Ung dung Android ho tro tu van va tra cuu du lich
+﻿# DA_APP - Ung dung Android ho tro tu van va tra cuu du lich
 
 ## 1. Tong quan de tai
 
-De tai cua nhom: **"Xay dung ung dung Android ho tro tu van va tra cuu du lich"**.
+De tai: **"Xay dung ung dung Android ho tro tu van va tra cuu du lich"**.
 
-Project hien tai la ung dung Android viet bang **Java + XML**, su dung **SQLite local** thong qua `SQLiteOpenHelper`. Ung dung dang tap trung vao cac chuc nang cot loi cua mot app tra cuu du lich:
+Project hien tai la ung dung Android viet bang **Java + XML**, luu du lieu bang **SQLite local**. App dang tap trung vao cac nhom chuc nang chinh:
 
-- Xem man hinh gioi thieu va vao trang chu.
+- Gioi thieu ung dung va vao trang chu.
 - Dang ky, dang nhap, phan quyen USER/ADMIN.
-- Tra cuu danh sach dia diem du lich.
-- Tim kiem dia diem theo ten/dia chi.
-- Loc dia diem theo khu vuc.
-- Xem chi tiet dia diem.
-- Luu/bo luu dia diem yeu thich.
-- Admin quan ly danh sach dia diem: them, sua, xoa, chon anh.
+- Tra cuu, tim kiem, loc va xem chi tiet dia diem du lich.
+- Luu dia diem yeu thich.
+- Danh gia dia diem bang sao.
+- Quan ly ho so ca nhan.
+- Admin quan ly dia diem: them, sua, xoa, chon anh.
 
-## 2. Cong nghe va cau truc project
+Tinh chat hien tai: app da phu hop tot voi phan **tra cuu du lich**; phan **tu van/goi y hanh trinh** da co nut va y tuong giao dien nhung chua co logic hoan chinh.
 
-### Cong nghe
+## 2. Cong nghe su dung
 
 - Ngon ngu: Java.
 - Giao dien: Android XML layout.
-- Database: SQLite local.
-- Thu vien chinh: AppCompat, Material, Activity, ConstraintLayout.
-- Build tool: Gradle Android Plugin.
+- Database: SQLite local qua `SQLiteOpenHelper`.
+- Luu phien dang nhap: `SharedPreferences`.
+- Build: Gradle Android Plugin.
+- Thu vien Android: AppCompat, Material, Activity, ConstraintLayout.
+- Min SDK: 24.
+- Target SDK: 36.
 
-### Cau truc chinh
+## 3. Cau truc project
 
-- `app/src/main/java/com/example/da_app/`: cac Activity cua ung dung.
-- `app/src/main/java/com/example/da_app/database/DatabaseHelper.java`: tao database, seed du lieu mau, xu ly dang nhap/dang ky, dia diem, yeu thich.
+- `app/src/main/java/com/example/da_app/`: cac man hinh Activity.
+- `app/src/main/java/com/example/da_app/database/DatabaseHelper.java`: tao database, seed du lieu mau, xu ly user, dia diem, yeu thich, danh gia.
 - `app/src/main/java/com/example/da_app/model/DiaDiem.java`: model dia diem du lich.
-- `app/src/main/java/com/example/da_app/adapter/DiaDiemAdminAdapter.java`: adapter hien thi dia diem trong man hinh admin.
-- `app/src/main/res/layout/`: giao dien XML.
+- `app/src/main/java/com/example/da_app/model/DanhGiaCuaToi.java`: model danh gia cua user.
+- `app/src/main/java/com/example/da_app/adapter/DiaDiemAdminAdapter.java`: adapter danh sach dia diem cho admin.
+- `app/src/main/res/layout/`: cac file giao dien XML.
 - `app/src/main/res/drawable/`: anh va background drawable.
 
-## 3. Tai khoan mau
+## 4. Tai khoan mau
 
-Database dang seed san 2 tai khoan:
+Database seed san:
 
 - Admin: `admin@gmail.com` / `123456`
-- User: `user@gmail.com` / `123456`   " cứ đăng ký thôi nhe có admin là mặc định  "
+- User: `user@gmail.com` / `123456` " cứ đăng ký tài khoản bình thường nhe "
 
-Luu y: mat khau hien dang luu plain text trong SQLite, chi phu hop demo/hoc tap, chua phu hop san pham that.
+Nguoi dung moi cung co the tu dang ky tai khoan USER trong app.
 
-## 4. Cac phan da trien khai
+Luu y: mat khau dang luu plain text trong SQLite, phu hop demo/hoc tap nhung chua phu hop san pham that.
 
-### 4.1. Luong mo app va trang chu
+## 5. Cac man hinh/chuc nang da trien khai
 
-- `WelcomeActivity` la man hinh khoi dong.
-- Nguoi dung co the vao `MainActivity` ma khong bat buoc dang nhap.
-- Trang chu co cac muc: dia diem, hanh trinh, yeu thich, meo du lich, bottom navigation.
-- Phu hop voi huong app du lich vi co man hinh gioi thieu, dieu huong den kham pha va yeu thich.
+### 5.1. Welcome va trang chu
 
-### 4.2. Dang ky, dang nhap va phan quyen
+- `WelcomeActivity`: man hinh khoi dong/gioi thieu.
+- `MainActivity`: trang chu user.
+- Cho phep khach vao xem app ma khong bat buoc dang nhap.
+- Trang chu co menu: dia diem, hanh trinh, yeu thich, meo du lich.
+- Bottom navigation co: Home, Kham pha, Yeu thich, Goi y, Ca nhan.
 
-- `RegisterActivity` cho phep tao tai khoan USER.
-- `LoginActivity` kiem tra tai khoan trong SQLite.
-- Luu phien dang nhap bang `SharedPreferences`.
-- Co phan quyen ADMIN/USER:
+### 5.2. Dang ky, dang nhap, phan quyen
+
+- `RegisterActivity`: dang ky tai khoan USER, co validate ho ten, email, mat khau va email trung.
+- `LoginActivity`: dang nhap bang SQLite.
+- Luu thong tin dang nhap vao `SharedPreferences`.
+- Phan quyen:
   - ADMIN vao `AdminActivity`.
   - USER vao `MainActivity`.
-- Cac man hinh yeu thich co kiem tra dang nhap.
+- Cac man hinh can tai khoan nhu yeu thich, profile, danh gia co kiem tra dang nhap.
 
-### 4.3. Tra cuu va tim kiem dia diem
+### 5.3. Tra cuu va kham pha dia diem
 
-- `ExploreActivity` lay danh sach dia diem tu SQLite.
-- Co tim kiem theo ten dia diem va dia chi.
-- Co loc theo khu vuc: Tat ca, Mien Bac, Mien Trung, Mien Nam.
+- `ExploreActivity`: hien thi danh sach dia diem tu SQLite.
+- Tim kiem theo ten dia diem va dia chi.
+- Loc theo khu vuc: Tat ca, Mien Bac, Mien Trung, Mien Nam.
 - Co chuan hoa chuoi de tim kiem khong dau.
-- Moi item hien thi anh, ten, dia chi, danh gia, danh muc va nut yeu thich.
+- Moi dia diem hien thi anh, ten, dia chi, danh gia, danh muc va nut yeu thich.
 
-Day la phan bam rat sat de tai "tra cuu du lich".
+Day la phan bam sat nhat voi yeu cau "tra cuu du lich".
 
-### 4.4. Chi tiet dia diem
+### 5.4. Chi tiet dia diem
 
-- `PlaceDetailActivity` hien thi thong tin dia diem:
+- `PlaceDetailActivity`: hien thi thong tin chi tiet cua dia diem:
   - Ten dia diem.
   - Dia chi.
-  - Danh gia.
+  - Danh gia trung binh.
+  - So luot danh gia.
   - Danh muc.
   - Mo ta.
   - Thoi diem thich hop.
   - Anh dia diem.
-- Co nut yeu thich.
-- Co nut "Goi y hanh trinh", nhung hien moi la Toast, chua co logic tu van/tao hanh trinh.
+- Cho phep them/bo yeu thich.
+- Cho phep user danh gia 1-5 sao.
+- Neu user da danh gia, man hinh hien lai so sao da chon.
+- Nut "Goi y hanh trinh" hien moi dung Toast, chua tao hanh trinh that.
 
-### 4.5. Yeu thich dia diem
+### 5.5. Yeu thich
 
-- Bang `yeu_thich` da duoc tao trong SQLite.
-- `ExploreActivity` va `PlaceDetailActivity` co them/bo yeu thich.
-- `FavoriteActivity` hien thi danh sach dia diem yeu thich cua user dang dang nhap.
-- Trang yeu thich cho phep xoa khoi danh sach va bam vao item de xem chi tiet.
+- `FavoriteActivity`: hien danh sach dia diem user da luu.
+- Co the bo yeu thich truc tiep.
+- Bam vao item de xem chi tiet dia diem.
+- Bang SQLite lien quan: `yeu_thich`.
 
-### 4.6. Quan tri dia diem
+### 5.6. Danh gia dia diem
 
-- `AdminActivity` co man hinh quan tri.
-- `AdminPlaceActivity` hien danh sach dia diem.
-- `AddEditPlaceActivity` cho phep them/sua dia diem.
-- `DiaDiemAdminAdapter` cho phep sua/xoa tung dia diem.
-- Admin co the chon anh tu thu vien thiet bi bang `ACTION_OPEN_DOCUMENT`.
+- Bang SQLite `danh_gia` da duoc them.
+- Moi user chi co mot danh gia cho moi dia diem, neu danh gia lai thi cap nhat so sao.
+- Sau khi user danh gia, app tinh lai diem trung binh cua dia diem va cap nhat cot `dia_diem.danh_gia`.
+- `MyRatingActivity`: hien danh sach cac dia diem user da danh gia.
+- `DanhGiaCuaToi`: model phuc vu man hinh danh gia cua toi.
 
-Phan nay ho tro tot cho viec cap nhat du lieu du lich noi bo trong app.
+Day la phan moi quan trong, giup app co du lieu phan hoi nguoi dung va lam nen tang cho goi y/tu van sau nay.
 
-### 4.7. Database
+### 5.7. Ho so ca nhan
 
-`DatabaseHelper` da tao cac bang:
+- `ProfileActivity`: hien thong tin tai khoan dang dang nhap.
+- Co cac muc:
+  - Thong tin ca nhan.
+  - Dia diem yeu thich.
+  - Danh gia cua toi.
+  - Chinh sua ho so.
+  - Dang xuat.
+- `EditProfileActivity`: cho phep sua ho ten va email.
+- Khi sua thanh cong, app cap nhat ca SQLite va `SharedPreferences`.
+
+Phan profile truoc day con rong, hien da duoc trien khai thanh man hinh that.
+
+### 5.8. Admin va quan ly dia diem
+
+- `AdminActivity`: man hinh quan tri.
+- Co bao ve quyen admin bang `SharedPreferences`.
+- `AdminPlaceActivity`: danh sach dia diem cho admin.
+- `AddEditPlaceActivity`: them/sua dia diem, validate ten, dia chi, khu vuc, danh gia.
+- `DiaDiemAdminAdapter`: sua/xoa dia diem trong danh sach.
+- Admin co the chon anh tu thiet bi bang `ACTION_OPEN_DOCUMENT`.
+
+Phan admin quan ly dia diem da trien khai kha day du.
+
+## 6. Database hien tai
+
+`DatabaseHelper` dang dung `TravelApp.db`, version `3`.
+
+Bang da tao:
+
+- `nguoi_dung`: luu tai khoan, email, mat khau, vai tro, trang thai.
+- `dia_diem`: luu thong tin dia diem du lich.
+- `yeu_thich`: luu dia diem yeu thich theo user.
+- `hanh_trinh`: thiet ke truoc cho hanh trinh.
+- `chi_tiet_hanh_trinh`: thiet ke truoc cho chi tiet hanh trinh.
+- `meo_du_lich`: thiet ke truoc cho meo du lich.
+- `danh_gia`: luu danh gia sao cua user cho dia diem.
+
+Bang dang duoc dung that su trong UI/logic:
 
 - `nguoi_dung`
 - `dia_diem`
 - `yeu_thich`
+- `danh_gia`
+
+Bang moi thiet ke/chua co man hinh hoan chinh:
+
 - `hanh_trinh`
 - `chi_tiet_hanh_trinh`
 - `meo_du_lich`
 
-Trong do cac bang dang duoc dung that su: `nguoi_dung`, `dia_diem`, `yeu_thich`.
+## 7. Cac phan con ton dong
 
-## 5. Cac phan con ton dong
+### 7.1. Tu van/goi y du lich chua hoan chinh
 
-### 5.1. Chua co chuc nang tu van du lich dung nghia
+De tai co phan "ho tro tu van", nhung hien tai app chu yeu la tra cuu, yeu thich, danh gia va quan ly dia diem.
 
-De tai co cum "ho tro tu van", nhung hien app chu yeu la tra cuu va quan ly dia diem. Phan tu van moi the hien o muc giao dien/nut bam, chua co logic:
+Con thieu:
 
-- Chua goi y dia diem theo so thich, khu vuc, mua du lich, ngan sach, thoi gian.
-- Chua co bo cau hoi tu van.
-- Chua co thuat toan de xep hang/goi y dia diem phu hop.
-- Nut "Goi y hanh trinh" trong chi tiet dia diem moi hien Toast.
+- Bo cau hoi/bo loc tu van theo nhu cau nguoi dung.
+- Goi y dia diem theo khu vuc, danh muc, diem danh gia, thoi diem phu hop.
+- Goi y hanh trinh theo so ngay va so thich.
+- Logic cho tab/nut "Goi y" hien tai chua thanh module tu van day du.
 
-Nen bo sung it nhat mot module tu van don gian, vi du: nguoi dung chon khu vuc, loai hinh, thoi gian, muc danh gia mong muon, app tra ve danh sach goi y.
+Nen uu tien lam tiep phan nay de de tai ro tinh "tu van".
 
-### 5.2. Hanh trinh chua trien khai
+### 7.2. Hanh trinh chua trien khai thanh man hinh
 
-Database da co `hanh_trinh` va `chi_tiet_hanh_trinh`, giao dien cung co muc "Hanh trinh", nhung:
+Database da co `hanh_trinh` va `chi_tiet_hanh_trinh`, UI cung co menu "Hanh trinh", nhung chua co:
 
-- Chua co `JourneyActivity`.
-- Chua co man hinh tao/sua/xoa hanh trinh.
-- Chua co chuc nang them dia diem vao hanh trinh.
-- Chua co hien thi lich trinh theo ngay.
+- `JourneyActivity`.
+- Tao/sua/xoa hanh trinh.
+- Them dia diem vao hanh trinh.
+- Sap xep dia diem theo ngay/thu tu tham quan.
 
-Phan nay lien quan truc tiep den "tu van du lich", nen nen uu tien lam tiep.
+### 7.3. Meo du lich chua trien khai
 
-### 5.3. Meo du lich chua trien khai
+Database co `meo_du_lich`, trang chu va admin co muc meo du lich, nhung chua co:
 
-Database co bang `meo_du_lich`, trang chu va admin co muc "Meo du lich", nhung:
+- `TipsActivity`.
+- Danh sach meo du lich cho user.
+- CRUD meo du lich cho admin.
 
-- Chua co `TipsActivity`.
-- Chua co CRUD meo du lich cho admin.
-- Chua co danh sach/noi dung meo cho user.
+### 7.4. Quan ly nguoi dung cho admin chua trien khai
 
-Day la phan phu hop de tai, khong nen xoa, nhung hien dang la chuc nang dang do.
+Admin co menu quan ly nguoi dung nhung hien moi o muc Toast/chua co man hinh.
 
-### 5.4. Quan ly nguoi dung admin chua trien khai
-
-Admin co muc "Quan ly nguoi dung", nhung hien chi Toast.
-
-Nen bo sung neu muon hoan thien phan quan tri:
+Nen bo sung:
 
 - Danh sach user.
 - Khoa/mo tai khoan.
 - Xem thong tin user.
-- Khong cho admin xoa chinh minh.
+- Khong cho admin xoa/khoa chinh minh.
 
-### 5.5. Ho so ca nhan chua hoan thien
+### 7.5. Anh du lieu mau chua dong bo
 
-- `ProfileActivity.java` hien la class rong, khong ke thua Activity va khong co layout.
-- Bottom nav "Ca nhan" trong `MainActivity` dang hien AlertDialog thong tin tai khoan, chua mo `ProfileActivity`.
+Database seed cac dia diem `halong_bay`, `dalat`, `hoian`, nhung thu muc `drawable` hien chi co anh that cho `halong_bay`. Da Lat/Hoi An co the bi fallback ve anh Ha Long.
 
-Neu khong lam profile rieng, co the xoa `ProfileActivity`. Neu can tinh nang ca nhan, nen tao man hinh hoan chinh.
+Nen them anh `dalat`, `hoian` hoac cap nhat lai seed data.
 
-### 5.6. Du lieu mau va anh chua dong bo
+### 7.6. Loi encoding tieng Viet trong Java
 
-Seed database co `dalat` va `hoian`, nhung trong `drawable` hien chi thay anh `halong_bay.png` va `icon_location.png`. Vi vay Da Lat/Hoi An se fallback ve anh Ha Long.
-
-Nen them anh tuong ung hoac sua du lieu mau de tranh tat ca dia diem hien cung mot anh.
-
-### 5.7. Van de encoding tieng Viet trong Java
-
-Nhieu chuoi trong file `.java` dang bi loi ma hoa, vi du hien dang thanh dang `Ä`, `Ãª`, `á»...`. Layout XML lai hien tieng Viet dung hon.
+Nhieu file Java dang bi loi ma hoa tieng Viet trong comment/string, vi du cac chuoi hien thanh dang `A`, `A~`, `a»...`.
 
 Anh huong:
 
-- Toast, dialog, error message co the hien loi tieng Viet trong app.
+- Toast/dialog/error co the hien sai tieng Viet.
 - Comment kho doc.
-- Tim kiem/so sanh chuoi co dau co the sai neu du lieu bi seed loi encoding.
+- Du lieu seed co dau co the bi luu sai, anh huong tim kiem/so sanh chuoi.
 
-Nen chuan hoa toan bo file Java ve UTF-8 va sua lai cac chuoi hien thi.
+Nen chuan hoa cac file Java ve UTF-8 va sua lai toan bo chuoi hien thi.
 
-### 5.8. Bao mat va chat luong code
+### 7.7. Bao mat va chat luong code
 
-- Mat khau dang luu plain text.
-- Chua co man hinh doi mat khau/quen mat khau.
-- Chua co validate email khi dang nhap.
-- SQLite local phu hop demo, nhung neu app can dung nhieu thiet bi thi can backend/API.
-- Logic hien thi item user/favorite/admin lap lai nhieu, co the tach helper hien thi anh.
-- Test hien chi la test mau mac dinh, chua co test nghiep vu that.
+- Mat khau luu plain text.
+- Chua co doi mat khau/quen mat khau.
+- Chua co backend/API, du lieu chi nam local.
+- Chua co test nghiep vu cho database, tim kiem, yeu thich, danh gia.
+- Co nhieu logic lap lai ve load anh, kiem tra dang nhap, hien card dia diem.
 
-## 6. Phan co dau hieu thua hoac lac de
+## 8. Phan thua/lac de
 
-Khong thay chuc nang nao hoan toan lac de nhu ban hang, game, mang xa hoi... Hau het cac phan deu lien quan den du lich. Tuy nhien co cac phan **thua tam thoi/chua dung den**:
+Khong thay chuc nang nao hoan toan lac de voi ung dung du lich. Tuy nhien co cac phan **dang thua tam thoi vi chua hoan thien**:
 
-- `ProfileActivity.java`: hien rong, chua duoc khai bao trong manifest, chua co tac dung.
-- Bang `hanh_trinh`, `chi_tiet_hanh_trinh`: dung voi de tai, nhung hien chua co UI/logic nen dang la thiet ke truoc.
-- Bang `meo_du_lich`: dung voi de tai, nhung chua co UI/logic nen dang la thiet ke truoc.
-- Menu "Quan ly nguoi dung", "Quan ly meo du lich", "Hanh trinh", "Meo du lich": hien moi la placeholder/Toast/comment, can hoan thien hoac an khoi UI neu nop ban demo ngan gon.
-- Thu muc `build/`, `.gradle/`, `coverage/`: la file sinh tu dong, khong nen dua vao phan mo ta chuc nang va khong nen commit len repository.
+- Bang `hanh_trinh` va `chi_tiet_hanh_trinh`: dung voi de tai, nhung chua co UI/logic.
+- Bang `meo_du_lich`: dung voi de tai, nhung chua co UI/logic.
+- Menu "Hanh trinh", "Meo du lich", "Quan ly nguoi dung": nen hoan thien hoac an neu demo/nop bai.
+- Thu muc `build/`, `.gradle/`, `coverage/`: file sinh tu dong, khong phai noi dung chuc nang va khong nen dua vao mo ta san pham.
 
-Ket luan: khong nen xoa cac phan hanh trinh/meo du lich neu nhom du dinh phat trien tiep. Neu thoi gian nop gap, nen an bot cac menu chua lam de tranh bi danh gia la app co nut nhung bam khong co chuc nang.
+`ProfileActivity` khong con la file thua nua vi hien da duoc trien khai va khai bao trong manifest.
 
-## 7. De xuat uu tien hoan thien
+## 9. De xuat uu tien hoan thien
 
-1. Sua loi encoding tieng Viet trong toan bo file Java.
+1. Sua loi encoding tieng Viet trong cac file Java.
 2. Hoan thien module tu van/goi y dia diem theo tieu chi nguoi dung.
-3. Hoan thien module hanh trinh: tao hanh trinh, them dia diem, sap xep theo ngay.
-4. Hoan thien module meo du lich hoac an menu neu khong kip.
-5. Them anh cho cac dia diem mau va tang so luong du lieu mau.
-6. Hoan thien profile/user management neu can diem phan quyen/admin.
-7. Bo sung test cho database va cac ham loc/tim kiem.
-8. Doi ten app trong `strings.xml` tu `DA_APP` thanh ten than thien hon, vi du `Du lich Viet Nam`.
+3. Hoan thien module hanh trinh.
+4. Them module meo du lich hoac an menu neu chua kip.
+5. Them anh cho Da Lat, Hoi An va mo rong du lieu mau.
+6. Hoan thien quan ly nguoi dung cho admin.
+7. Bo sung doi mat khau va cai thien bao mat mat khau.
+8. Viet test cho database, tim kiem, yeu thich, danh gia.
+9. Doi ten app trong `strings.xml` tu `DA_APP` sang ten than thien hon, vi du `Du lich Viet Nam`.
 

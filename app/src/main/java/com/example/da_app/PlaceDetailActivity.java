@@ -29,6 +29,18 @@ public class PlaceDetailActivity extends AppCompatActivity {
     private TextView txtRating;
     private TextView txtDescription;
     private TextView txtBestTime;
+    // =====================================================
+// VIEW ĐÁNH GIÁ
+// =====================================================
+
+    private TextView txtRatingInfo;
+    private TextView txtYourRating;
+
+    private TextView star1;
+    private TextView star2;
+    private TextView star3;
+    private TextView star4;
+    private TextView star5;
 
     private ImageView imgPlace;
 
@@ -92,7 +104,30 @@ public class PlaceDetailActivity extends AppCompatActivity {
 
         txtBestTime =
                 findViewById(R.id.txtBestTime);
+// =================================================
+// ÁNH XẠ ĐÁNH GIÁ
+// =================================================
 
+        txtRatingInfo =
+                findViewById(R.id.txtRatingInfo);
+
+        txtYourRating =
+                findViewById(R.id.txtYourRating);
+
+        star1 =
+                findViewById(R.id.star1);
+
+        star2 =
+                findViewById(R.id.star2);
+
+        star3 =
+                findViewById(R.id.star3);
+
+        star4 =
+                findViewById(R.id.star4);
+
+        star5 =
+                findViewById(R.id.star5);
         imgPlace =
                 findViewById(R.id.imgPlace);
 
@@ -167,7 +202,29 @@ public class PlaceDetailActivity extends AppCompatActivity {
             xuLyYeuThich();
 
         });
+// =================================================
+// ĐÁNH GIÁ 1 → 5 SAO
+// =================================================
 
+        star1.setOnClickListener(v -> {
+            xuLyDanhGia(1);
+        });
+
+        star2.setOnClickListener(v -> {
+            xuLyDanhGia(2);
+        });
+
+        star3.setOnClickListener(v -> {
+            xuLyDanhGia(3);
+        });
+
+        star4.setOnClickListener(v -> {
+            xuLyDanhGia(4);
+        });
+
+        star5.setOnClickListener(v -> {
+            xuLyDanhGia(5);
+        });
 
         // =================================================
         // GỢI Ý HÀNH TRÌNH
@@ -209,7 +266,17 @@ public class PlaceDetailActivity extends AppCompatActivity {
         if (databaseHelper != null
                 && maDiaDiem != -1) {
 
+            // Đồng bộ yêu thích
             capNhatTrangThaiYeuThich();
+
+            // Đọc lại địa điểm vì điểm có thể đã thay đổi
+            diaDiem =
+                    databaseHelper.layDiaDiemTheoMa(
+                            maDiaDiem
+                    );
+
+            // Đồng bộ đánh giá
+            capNhatGiaoDienDanhGia();
         }
     }
 
@@ -367,6 +434,9 @@ public class PlaceDetailActivity extends AppCompatActivity {
         // =================================================
 
         capNhatTrangThaiYeuThich();
+
+// Hiển thị điểm + số lượt + đánh giá của user
+        capNhatGiaoDienDanhGia();
     }
 
 
@@ -625,7 +695,286 @@ public class PlaceDetailActivity extends AppCompatActivity {
                 .show();
     }
 
+// =====================================================
+// XỬ LÝ KHI USER CHỌN SAO
+// =====================================================
 
+    private void xuLyDanhGia(int soSao) {
+
+        // =================================================
+        // CHƯA ĐĂNG NHẬP
+        // =================================================
+
+        if (!daDangNhap()) {
+
+            hienThiYeuCauDangNhapDanhGia();
+
+            return;
+        }
+
+
+        // =================================================
+        // LẤY USER
+        // =================================================
+
+        int maNguoiDung =
+                layMaNguoiDung();
+
+
+        if (maNguoiDung == -1) {
+
+            Toast.makeText(
+                    this,
+                    "Không tìm thấy thông tin người dùng",
+                    Toast.LENGTH_SHORT
+            ).show();
+
+            return;
+        }
+
+
+        // =================================================
+        // LƯU SQLITE
+        // =================================================
+
+        boolean ketQua =
+                databaseHelper.themHoacSuaDanhGia(
+                        maNguoiDung,
+                        maDiaDiem,
+                        soSao
+                );
+
+
+        if (ketQua) {
+
+            Toast.makeText(
+                    this,
+                    "Bạn đã đánh giá "
+                            + soSao
+                            + " sao",
+                    Toast.LENGTH_SHORT
+            ).show();
+
+
+            // Đọc lại địa điểm vì điểm trung bình đã thay đổi
+            diaDiem =
+                    databaseHelper.layDiaDiemTheoMa(
+                            maDiaDiem
+                    );
+
+
+            // Cập nhật giao diện
+            capNhatGiaoDienDanhGia();
+
+        } else {
+
+            Toast.makeText(
+                    this,
+                    "Không thể lưu đánh giá",
+                    Toast.LENGTH_SHORT
+            ).show();
+        }
+    }
+
+
+// =====================================================
+// CẬP NHẬT GIAO DIỆN ĐÁNH GIÁ
+// =====================================================
+
+    private void capNhatGiaoDienDanhGia() {
+
+        if (diaDiem == null
+                || maDiaDiem == -1) {
+
+            return;
+        }
+
+
+        // =================================================
+        // ĐIỂM TRUNG BÌNH
+        // =================================================
+
+        double diem =
+                diaDiem.getDanhGia();
+
+
+        int soLuot =
+                databaseHelper.laySoLuotDanhGia(
+                        maDiaDiem
+                );
+
+
+        txtRatingInfo.setText(
+                "Điểm hiện tại: "
+                        + String.format(
+                        java.util.Locale.getDefault(),
+                        "%.1f",
+                        diem
+                )
+                        + " / 5"
+                        + "   •   "
+                        + soLuot
+                        + " lượt đánh giá"
+        );
+
+
+        // =================================================
+        // CẬP NHẬT ĐIỂM Ở PHÍA TRÊN
+        // =================================================
+
+        String danhMuc =
+                diaDiem.getDanhMuc();
+
+
+        if (danhMuc == null
+                || danhMuc.trim().isEmpty()) {
+
+            danhMuc = "Du lịch";
+        }
+
+
+        txtRating.setText(
+                "★ "
+                        + String.format(
+                        java.util.Locale.getDefault(),
+                        "%.1f",
+                        diem
+                )
+                        + "   •   "
+                        + danhMuc
+        );
+
+
+        // =================================================
+        // KHÁCH CHƯA ĐĂNG NHẬP
+        // =================================================
+
+        if (!daDangNhap()) {
+
+            hienThiSoSaoDaChon(0);
+
+            txtYourRating.setText(
+                    "Đăng nhập để đánh giá địa điểm"
+            );
+
+            return;
+        }
+
+
+        // =================================================
+        // LẤY ĐÁNH GIÁ CỦA USER
+        // =================================================
+
+        int maNguoiDung =
+                layMaNguoiDung();
+
+
+        if (maNguoiDung == -1) {
+
+            hienThiSoSaoDaChon(0);
+
+            return;
+        }
+
+
+        int soSao =
+                databaseHelper.layDanhGiaCuaUser(
+                        maNguoiDung,
+                        maDiaDiem
+                );
+
+
+        hienThiSoSaoDaChon(
+                soSao
+        );
+
+
+        if (soSao == 0) {
+
+            txtYourRating.setText(
+                    "Chạm vào ngôi sao để đánh giá"
+            );
+
+        } else {
+
+            txtYourRating.setText(
+                    "Đánh giá của bạn: "
+                            + soSao
+                            + " / 5 sao"
+            );
+        }
+    }
+
+
+// =====================================================
+// HIỂN THỊ SỐ SAO USER ĐÃ CHỌN
+// =====================================================
+
+    private void hienThiSoSaoDaChon(
+            int soSao
+    ) {
+
+        star1.setText(
+                soSao >= 1 ? "★" : "☆"
+        );
+
+        star2.setText(
+                soSao >= 2 ? "★" : "☆"
+        );
+
+        star3.setText(
+                soSao >= 3 ? "★" : "☆"
+        );
+
+        star4.setText(
+                soSao >= 4 ? "★" : "☆"
+        );
+
+        star5.setText(
+                soSao >= 5 ? "★" : "☆"
+        );
+    }
+
+
+// =====================================================
+// YÊU CẦU ĐĂNG NHẬP ĐỂ ĐÁNH GIÁ
+// =====================================================
+
+    private void hienThiYeuCauDangNhapDanhGia() {
+
+        new AlertDialog.Builder(this)
+
+                .setTitle(
+                        "Yêu cầu đăng nhập"
+                )
+
+                .setMessage(
+                        "Bạn cần đăng nhập để đánh giá địa điểm."
+                )
+
+                .setNegativeButton(
+                        "HỦY",
+                        null
+                )
+
+                .setPositiveButton(
+                        "ĐĂNG NHẬP",
+                        (dialog, which) -> {
+
+                            Intent intent =
+                                    new Intent(
+                                            PlaceDetailActivity.this,
+                                            LoginActivity.class
+                                    );
+
+                            startActivity(
+                                    intent
+                            );
+                        }
+                )
+
+                .show();
+    }
     // =====================================================
     // HIỂN THỊ ẢNH
     // =====================================================
@@ -635,7 +984,6 @@ public class PlaceDetailActivity extends AppCompatActivity {
         // =================================================
         // KHÔNG CÓ ẢNH
         // =================================================
-
         if (hinhAnh == null
                 || hinhAnh.trim().isEmpty()) {
 

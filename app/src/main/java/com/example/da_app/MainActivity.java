@@ -22,11 +22,12 @@ public class MainActivity extends AppCompatActivity {
     // =====================================================
     // MENU
     // =====================================================
-
     private View menuLocation;
     private View menuJourney;
     private View menuFavorite;
     private View menuTips;
+
+    private View btnMenu;
 
 
     // =====================================================
@@ -39,11 +40,11 @@ public class MainActivity extends AppCompatActivity {
     // =====================================================
     // BOTTOM NAVIGATION
     // =====================================================
-
     private View navHome;
     private View navExplore;
     private View navFavorite;
     private View navProfile;
+    private View navSuggest;
 
 
     // =====================================================
@@ -115,7 +116,8 @@ public class MainActivity extends AppCompatActivity {
 
         menuTips =
                 findViewById(R.id.menuTips);
-
+        btnMenu =
+                findViewById(R.id.btnMenu);
 
         // =================================================
         // CARD
@@ -141,7 +143,13 @@ public class MainActivity extends AppCompatActivity {
         navProfile =
                 findViewById(R.id.navProfile);
 
+        navSuggest =
+                findViewById(R.id.navSuggest);
+        btnMenu.setOnClickListener(v -> {
 
+            xuLyTaiKhoan();
+
+        });
         // =================================================
         // ĐỊA ĐIỂM
         // KHÔNG CẦN ĐĂNG NHẬP
@@ -241,6 +249,15 @@ public class MainActivity extends AppCompatActivity {
         navProfile.setOnClickListener(v -> {
 
             xuLyTaiKhoan();
+
+        });
+        // =================================================
+        // NAV GỢI Ý
+        // =================================================
+
+        navSuggest.setOnClickListener(v -> {
+
+            hienThiGoiYDuLich();
 
         });
     }
@@ -345,10 +362,9 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
-
-    // =====================================================
-    // CÁ NHÂN
-    // =====================================================
+// =====================================================
+// CÁ NHÂN / PROFILE
+// =====================================================
 
     private void xuLyTaiKhoan() {
 
@@ -358,12 +374,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (!daDangNhap()) {
 
-            Intent intent = new Intent(
-                    MainActivity.this,
-                    LoginActivity.class
+            hienThiYeuCauDangNhap(
+                    "Bạn cần đăng nhập để xem hồ sơ cá nhân."
             );
-
-            startActivity(intent);
 
             return;
         }
@@ -371,52 +384,22 @@ public class MainActivity extends AppCompatActivity {
 
         // =============================================
         // ĐÃ ĐĂNG NHẬP
+        // MỞ MÀN HÌNH PROFILE
         // =============================================
 
-        SharedPreferences preferences =
-                getSharedPreferences(
-                        "TAI_KHOAN",
-                        MODE_PRIVATE
+        Intent intent =
+                new Intent(
+                        MainActivity.this,
+                        ProfileActivity.class
                 );
 
-
-        String hoTen =
-                preferences.getString(
-                        "HO_TEN",
-                        "Người dùng"
-                );
-
-
-        String email =
-                preferences.getString(
-                        "EMAIL",
-                        ""
-                );
-
-
-        new AlertDialog.Builder(this)
-                .setTitle("Tài khoản")
-                .setMessage(
-                        "Họ tên: "
-                                + hoTen
-                                + "\n\nEmail: "
-                                + email
-                )
-                .setNegativeButton(
-                        "Đóng",
-                        null
-                )
-                .setPositiveButton(
-                        "Đăng xuất",
-                        (dialog, which) -> dangXuat()
-                )
-                .show();
+        startActivity(intent);
     }
 
 
-    // =====================================================
-    // KIỂM TRA ĐĂNG NHẬP
-    // =====================================================
+// =====================================================
+// KIỂM TRA ĐĂNG NHẬP
+// =====================================================
 
     private boolean daDangNhap() {
 
@@ -426,7 +409,6 @@ public class MainActivity extends AppCompatActivity {
                         MODE_PRIVATE
                 );
 
-
         return preferences.getBoolean(
                 "DA_DANG_NHAP",
                 false
@@ -434,23 +416,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // =====================================================
-    // YÊU CẦU ĐĂNG NHẬP
-    // =====================================================
+// =====================================================
+// YÊU CẦU ĐĂNG NHẬP
+// =====================================================
 
-    private void hienThiYeuCauDangNhap(
-            String noiDung
-    ) {
+    private void hienThiYeuCauDangNhap(String noiDung) {
 
         new AlertDialog.Builder(this)
 
-                .setTitle(
-                        "Yêu cầu đăng nhập"
-                )
+                .setTitle("Yêu cầu đăng nhập")
 
-                .setMessage(
-                        noiDung
-                )
+                .setMessage(noiDung)
 
                 .setNegativeButton(
                         "HỦY",
@@ -475,9 +451,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // =====================================================
-    // ĐĂNG XUẤT
-    // =====================================================
+// =====================================================
+// ĐĂNG XUẤT
+// =====================================================
 
     private void dangXuat() {
 
@@ -487,16 +463,34 @@ public class MainActivity extends AppCompatActivity {
                         MODE_PRIVATE
                 );
 
-
         preferences
                 .edit()
                 .clear()
                 .apply();
 
-
-        // Không chuyển sang LoginActivity
-        // Vì app cho phép khách sử dụng
-
+        // App vẫn cho khách sử dụng
         recreate();
+    }
+    // =====================================================
+// GỢI Ý DU LỊCH
+// =====================================================
+
+    private void hienThiGoiYDuLich() {
+
+        new AlertDialog.Builder(this)
+
+                .setTitle("Gợi ý du lịch")
+
+                .setMessage(
+                        "Chức năng này sẽ giúp bạn tìm địa điểm " +
+                                "du lịch phù hợp với sở thích."
+                )
+
+                .setPositiveButton(
+                        "OK",
+                        null
+                )
+
+                .show();
     }
 }

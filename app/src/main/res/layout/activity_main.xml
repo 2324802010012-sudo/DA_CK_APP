@@ -794,102 +794,212 @@
         </LinearLayout>
 
     </ScrollView>
-
-
     <!-- ================================================= -->
     <!-- THANH ĐIỀU HƯỚNG DƯỚI -->
     <!-- ================================================= -->
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/bottomNavigation"
-
         android:layout_width="0dp"
-        android:layout_height="70dp"
-
-        android:background="#FFFFFF"
-
-        android:elevation="12dp"
-
-        android:gravity="center"
-        android:orientation="horizontal"
+        android:layout_height="90dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:elevation="16dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- NỀN TRẮNG -->
 
-        <!-- TRANG CHỦ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="bottom"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <TextView
+
+            <!-- ============================== -->
+            <!-- KHÁM PHÁ -->
+            <!-- ============================== -->
+
+            <LinearLayout
+                android:id="@+id/navExplore"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@android:drawable/ic_menu_search"
+                    android:tint="#8493A8"
+                    android:contentDescription="Khám phá" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="Khám phá"
+                    android:textColor="#8493A8"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+
+            <!-- ============================== -->
+            <!-- YÊU THÍCH -->
+            <!-- ============================== -->
+
+            <LinearLayout
+                android:id="@+id/navFavorite"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:gravity="center"
+                    android:text="♥"
+                    android:textColor="#8493A8"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:text="Yêu thích"
+                    android:textColor="#8493A8"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+
+            <!-- ============================== -->
+            <!-- CHỪA CHỖ CHO TRANG CHỦ -->
+            <!-- ============================== -->
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+
+            <!-- ============================== -->
+            <!-- CÁ NHÂN -->
+            <!-- ============================== -->
+
+            <LinearLayout
+                android:id="@+id/navProfile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@android:drawable/ic_menu_myplaces"
+                    android:tint="#8493A8"
+                    android:contentDescription="Cá nhân" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="Cá nhân"
+                    android:textColor="#8493A8"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+
+            <!-- ============================== -->
+            <!-- GỢI Ý -->
+            <!-- ============================== -->
+
+            <LinearLayout
+                android:id="@+id/navSuggest"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@android:drawable/ic_menu_compass"
+                    android:tint="#8493A8"
+                    android:contentDescription="Gợi ý" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="Gợi ý"
+                    android:textColor="#8493A8"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <!-- ================================================= -->
+        <!-- HOME NỔI CHÍNH GIỮA -->
+        <!-- ================================================= -->
+
+        <LinearLayout
             android:id="@+id/navHome"
+            android:layout_width="82dp"
+            android:layout_height="88dp"
+            android:layout_gravity="top|center_horizontal"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            <!-- NÚT HOME TRÒN -->
 
-            android:layout_weight="1"
-
-            android:gravity="center"
-
-            android:text="⌂&#10;Trang chủ"
-
-            android:textColor="#1473E6"
-            android:textSize="12sp"
-            android:textStyle="bold" />
-
-
-        <!-- KHÁM PHÁ -->
-
-        <TextView
-            android:id="@+id/navExplore"
-
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-
-            android:layout_weight="1"
-
-            android:gravity="center"
-
-            android:text="⌕&#10;Khám phá"
-
-            android:textColor="#8493A8"
-            android:textSize="12sp" />
+            <TextView
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:background="@drawable/bg_home_circle"
+                android:elevation="12dp"
+                android:gravity="center"
+                android:text="⌂"
+                android:textColor="#FFFFFF"
+                android:textSize="29sp"
+                android:textStyle="bold" />
 
 
-        <!-- YÊU THÍCH -->
+            <!-- CHỮ TRANG CHỦ -->
 
-        <TextView
-            android:id="@+id/navFavorite"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Trang chủ"
+                android:textColor="#2563EB"
+                android:textSize="11sp"
+                android:textStyle="bold" />
 
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-
-            android:layout_weight="1"
-
-            android:gravity="center"
-
-            android:text="♥&#10;Yêu thích"
-
-            android:textColor="#8493A8"
-            android:textSize="12sp" />
-
-
-        <!-- CÁ NHÂN -->
-
-        <TextView
-            android:id="@+id/navProfile"
-
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-
-            android:layout_weight="1"
-
-            android:gravity="center"
-
-            android:text="●&#10;Cá nhân"
-
-            android:textColor="#8493A8"
-            android:textSize="12sp" />
-
-    </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

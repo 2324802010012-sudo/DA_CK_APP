@@ -1,6 +1,262 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7FAFE"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="30dp">
+
+
+        <!-- ======================================== -->
+        <!-- HEADER -->
+        <!-- ======================================== -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+            <TextView
+                android:id="@+id/btnBack"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="‹"
+                android:textColor="#12365A"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="HỒ SƠ CÁ NHÂN"
+                android:textColor="#12365A"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+
+            <!-- Giữ tiêu đề cân giữa -->
+            <View
+                android:layout_width="45dp"
+                android:layout_height="45dp" />
+
+        </LinearLayout>
+
+
+        <!-- ======================================== -->
+        <!-- THÔNG TIN USER -->
+        <!-- ======================================== -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="22dp"
+            android:background="@drawable/bg_card"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:id="@+id/txtAvatar"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:background="@drawable/bg_icon_blue"
+                android:gravity="center"
+                android:text="U"
+                android:textColor="#1473E6"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text="Người dùng"
+                android:textColor="#12365A"
+                android:textSize="21sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="email@gmail.com"
+                android:textColor="#718096"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txtRole"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_icon_green"
+                android:gravity="center"
+                android:minWidth="100dp"
+                android:paddingStart="14dp"
+                android:paddingTop="7dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="7dp"
+                android:text="Thành viên"
+                android:textColor="#008B6D"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <!-- ======================================== -->
+        <!-- TÀI KHOẢN -->
+        <!-- ======================================== -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="28dp"
+            android:text="Tài khoản"
+            android:textColor="#12365A"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+
+        <!-- THÔNG TIN -->
+
+        <TextView
+            android:id="@+id/menuInfo"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="22dp"
+            android:background="@drawable/bg_card"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:text="👤   Thông tin cá nhân                         ›"
+            android:textColor="#314766"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+        <!-- CHỈNH SỬA -->
+
+        <TextView
+            android:id="@+id/menuEditProfile"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="22dp"
+            android:background="@drawable/bg_card"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:text="✎   Chỉnh sửa hồ sơ                           ›"
+            android:textColor="#314766"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+        <!-- ======================================== -->
+        <!-- HOẠT ĐỘNG -->
+        <!-- ======================================== -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="28dp"
+            android:text="Hoạt động của tôi"
+            android:textColor="#12365A"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+
+        <!-- YÊU THÍCH -->
+
+        <TextView
+            android:id="@+id/menuFavorite"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="22dp"
+            android:background="@drawable/bg_card"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:text="♥   Địa điểm yêu thích                        ›"
+            android:textColor="#314766"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+        <!-- ĐÁNH GIÁ -->
+
+        <TextView
+            android:id="@+id/menuRating"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="22dp"
+            android:background="@drawable/bg_card"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:text="★   Đánh giá của tôi                           ›"
+            android:textColor="#314766"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+        <!-- ======================================== -->
+        <!-- LOGOUT -->
+        <!-- ======================================== -->
+
+        <TextView
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="22dp"
+            android:background="@drawable/bg_card"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="ĐĂNG XUẤT"
+            android:textColor="#F0445E"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</ScrollView>
